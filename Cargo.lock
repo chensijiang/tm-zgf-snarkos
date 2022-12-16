@@ -323,6 +323,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "blst"
+version = "0.3.10"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6a30d0edd9dd1c60ddb42b80341c7852f6f985279a5c1a83659dcb65899dec99"
+dependencies = [
+ "cc",
+ "glob",
+ "threadpool",
+ "which",
+ "zeroize",
+]
+
+[[package]]
 name = "bs58"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2782,12 +2795,23 @@ dependencies = [
  "serde",
  "sha2",
  "smallvec",
+ "snarkvm-algorithms-cuda",
  "snarkvm-curves",
  "snarkvm-fields",
  "snarkvm-parameters",
  "snarkvm-r1cs",
  "snarkvm-utilities",
  "thiserror",
+]
+
+[[package]]
+name = "snarkvm-algorithms-cuda"
+version = "0.9.11"
+dependencies = [
+ "blst",
+ "cc",
+ "sppark",
+ "which",
 ]
 
 [[package]]
@@ -3287,6 +3311,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6e63cff320ae2c57904679ba7cb63280a3dc4613885beafb148ee7bf9aa9042d"
 
 [[package]]
+name = "sppark"
+version = "0.1.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cfb9486baeb35ca1197c4df27451d4df5bd321e15da94c1ddb89670f9e94896a"
+dependencies = [
+ "cc",
+ "which",
+]
+
+[[package]]
 name = "static_assertions"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3344,6 +3378,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a393066ed9010ebaed60b9eafa373d4b1baac186dd7e008555b0f702b51945b6"
 dependencies = [
  "unicode-xid 0.0.4",
+]
+
+[[package]]
+name = "synstructure"
+version = "0.12.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f36bdaa60a83aca3921b5259d5400cbf5e90fc51931376a9bd4a0eb79aa7210f"
+dependencies = [
+ "proc-macro2 1.0.47",
+ "quote 1.0.21",
+ "syn 1.0.105",
+ "unicode-xid 0.2.4",
 ]
 
 [[package]]
@@ -3412,6 +3458,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5516c27b78311c50bf42c071425c560ac799b11c30b31f87e3081965fe5e0180"
 dependencies = [
  "once_cell",
+]
+
+[[package]]
+name = "threadpool"
+version = "1.8.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d050e60b33d41c19108b32cea32164033a9013fe3b46cbd4457559bfbf77afaa"
+dependencies = [
+ "num_cpus",
 ]
 
 [[package]]
@@ -3811,6 +3866,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fc72304796d0818e357ead4e000d19c9c174ab23dc11093ac919054d20a6a7fc"
 
 [[package]]
+name = "unicode-xid"
+version = "0.2.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f962df74c8c05a667b5ee8bcf162993134c104e96440b663c8daa176dc772d8c"
+
+[[package]]
 name = "universal-hash"
 version = "0.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4040,6 +4101,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "which"
+version = "4.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1c831fbbee9e129a8cf93e7747a82da9d95ba8e16621cae60ec2cdc849bacb7b"
+dependencies = [
+ "either",
+ "libc",
+ "once_cell",
+]
+
+[[package]]
 name = "winapi"
 version = "0.3.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4184,3 +4256,18 @@ name = "zeroize"
 version = "1.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4756f7db3f7b5574938c3eb1c117038b8e07f95ee6718c0efad4ac21508f1efd"
+dependencies = [
+ "zeroize_derive",
+]
+
+[[package]]
+name = "zeroize_derive"
+version = "1.3.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "44bf07cb3e50ea2003396695d58bf46bc9887a1f362260446fad6bc4e79bd36c"
+dependencies = [
+ "proc-macro2 1.0.47",
+ "quote 1.0.21",
+ "syn 1.0.105",
+ "synstructure",
+]
