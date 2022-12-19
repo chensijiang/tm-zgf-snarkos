@@ -87,7 +87,9 @@ impl<N: Network, C: ConsensusStorage<N>> Prover<N, C> {
         // Load the coinbase puzzle.
         let coinbase_puzzle = CoinbasePuzzle::<N>::load()?;
         // Compute the maximum number of puzzle instances.
-        let max_puzzle_instances = num_cpus::get().saturating_sub(2).clamp(1, 1);
+        let max_puzzle_instances = num_cpus::get().saturating_sub(2).clamp(1, 2);
+
+        
         // Initialize the node.
         let node = Self {
             router,
@@ -351,13 +353,13 @@ impl<N: Network, C: ConsensusStorage<N>> Prover<N, C> {
     fn increment_puzzle_instances(&self) {
         self.puzzle_instances.fetch_add(1, Ordering::SeqCst);
         #[cfg(debug_assertions)]
-        trace!("Number of Instances - {}", self.num_puzzle_instances());
+        info!("Number of Instances - {}", self.num_puzzle_instances());
     }
 
     /// Decrements the number of puzzle instances.
     fn decrement_puzzle_instances(&self) {
         self.puzzle_instances.fetch_sub(1, Ordering::SeqCst);
         #[cfg(debug_assertions)]
-        trace!("Number of Instances - {}", self.num_puzzle_instances());
+        info!("Number of Instances - {}", self.num_puzzle_instances());
     }
 }
